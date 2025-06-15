@@ -25,7 +25,6 @@ interface VideoEditorProps {
 }
 
 export const VideoEditor = ({ video }: VideoEditorProps) => {
-  console.log("Editor")
   const [title, setTitle] = useState(video.title);
   const [description, setDescription] = useState(video.description);
   const [privacyStatus, setPrivacyStatus] = useState(video.privacyStatus);

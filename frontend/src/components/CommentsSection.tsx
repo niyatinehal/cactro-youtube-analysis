@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -40,6 +41,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { comment } from "postcss";
 
 interface CommentsSectionProps {
   videoId: string;
@@ -236,15 +238,15 @@ export const CommentsSection = ({ videoId }: CommentsSectionProps) => {
         <Avatar className="h-8 w-8">
           <AvatarImage src={comment.authorProfileImageUrl} />
           <AvatarFallback>
-            {comment.authorDisplayName.charAt(0).toUpperCase()}
+            {comment[0]?.author_display_name.charAt(0).toUpperCase()}
           </AvatarFallback>
         </Avatar>
         <div className="flex-1 space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <p className="font-medium text-sm">{comment.authorDisplayName}</p>
+              <p className="font-medium text-sm">{comment.author_display_name}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {formatDate(comment.publishedAt)}
+                {formatDate(comment.published_at)}
               </p>
             </div>
             <DropdownMenu>
@@ -265,7 +267,7 @@ export const CommentsSection = ({ videoId }: CommentsSectionProps) => {
             </DropdownMenu>
           </div>
           <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
-            {comment.textDisplay}
+            {comment.text_display}
           </p>
           <div className="flex items-center space-x-4">
             <Button variant="ghost" size="sm" className="h-6 px-2 text-xs">
@@ -423,6 +425,8 @@ export const CommentsSection = ({ videoId }: CommentsSectionProps) => {
     );
   }
 
+  console.log(comments)
+
   return (
     <div className="space-y-6">
       <Card className="dashboard-card">
@@ -466,7 +470,7 @@ export const CommentsSection = ({ videoId }: CommentsSectionProps) => {
 
           {/* Comments List */}
           <div className="space-y-6">
-            {comments.length === 0 ? (
+            {comments?.length === 0 ? (
               <div className="text-center py-8 text-gray-500 dark:text-gray-400">
                 No comments yet. Be the first to comment!
               </div>

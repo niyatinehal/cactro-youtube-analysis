@@ -32,13 +32,13 @@ export async function updateVideo(videoId: string, data: VideoUpdateData): Promi
 
 // ✅ Comments
 export async function getComments(videoId: string): Promise<Comment[]> {
-  const res = await fetch(`${API}/api/videos/${videoId}/comments`);
+  const res = await fetch(`${API}/api/comment/${videoId}/comments`);
   if (!res.ok) throw new Error("Failed to fetch comments");
   return res.json();
 }
 
 export async function createComment(data: CreateCommentData): Promise<Comment> {
-  const res = await fetch(`${API}/api/videos/${data.videoId}/comments`, {
+  const res = await fetch(`${API}/api/comment/${data.videoId}/comments`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
