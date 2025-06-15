@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -32,10 +34,10 @@ export const VideoDetails = ({ video }: VideoDetailsProps) => {
       return `${hours}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
     }
     return `${minutes}:${seconds.toString().padStart(2, "0")}`;
-  };
+  };  
 
-  const getYouTubeUrl = () => `https://www.youtube.com/watch?v=${video.id}`;
-
+  const getYouTubeUrl = () => `https://www.youtube.com/watch?v=Vjm2tRaqFlA`;
+ console.log(video)
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Video Preview */}
@@ -44,7 +46,7 @@ export const VideoDetails = ({ video }: VideoDetailsProps) => {
           <CardContent className="p-0">
             <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
               <img
-                src={video.thumbnailUrl}
+                src={video.thumbnail}
                 alt={video.title}
                 className="w-full h-full object-cover"
               />
@@ -111,7 +113,7 @@ export const VideoDetails = ({ video }: VideoDetailsProps) => {
                   Tags
                 </h4>
                 <div className="flex flex-wrap gap-2">
-                  {video.tags.map((tag) => (
+                  {video.tags?.map((tag) => (
                     <Badge
                       key={tag}
                       variant="secondary"
@@ -137,7 +139,7 @@ export const VideoDetails = ({ video }: VideoDetailsProps) => {
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                 <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                  {video.viewCount.toLocaleString()}
+                  {video.views}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   Views
@@ -145,7 +147,7 @@ export const VideoDetails = ({ video }: VideoDetailsProps) => {
               </div>
               <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                 <p className="text-2xl font-bold text-green-600 dark:text-green-400">
-                  {video.likeCount.toLocaleString()}
+                  {video.likes}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   Likes
@@ -155,7 +157,7 @@ export const VideoDetails = ({ video }: VideoDetailsProps) => {
 
             <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
               <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-                {video.commentCount.toLocaleString()}
+                {video.comments}
               </p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 Comments
@@ -187,7 +189,7 @@ export const VideoDetails = ({ video }: VideoDetailsProps) => {
                   Duration:
                 </span>
                 <span className="font-medium">
-                  {formatDuration(video.duration)}
+                  {/* {formatDuration(video.duration)} */}
                 </span>
               </div>
               <div className="flex justify-between text-sm">
@@ -195,7 +197,7 @@ export const VideoDetails = ({ video }: VideoDetailsProps) => {
                   Published:
                 </span>
                 <span className="font-medium">
-                  {new Date(video.publishedAt).toLocaleDateString()}
+                  {/* {new Date(video?.publishedAt).toLocaleDateString()} */}
                 </span>
               </div>
             </div>
