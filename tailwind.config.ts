@@ -62,6 +62,28 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // YouTube-inspired brand colors
+        youtube: {
+          red: "#ff0000",
+          "red-dark": "#cc0000",
+          "red-light": "#ff3333",
+        },
+        // Modern dashboard colors
+        dashboard: {
+          bg: "#f8fafc",
+          "bg-dark": "#0f172a",
+          surface: "#ffffff",
+          "surface-dark": "#1e293b",
+          border: "#e2e8f0",
+          "border-dark": "#334155",
+        },
+        // Status colors
+        status: {
+          success: "#10b981",
+          warning: "#f59e0b",
+          error: "#ef4444",
+          info: "#3b82f6",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -85,10 +107,53 @@ export default {
             height: "0",
           },
         },
+        "fade-in": {
+          from: {
+            opacity: "0",
+            transform: "translateY(10px)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        "slide-in": {
+          from: {
+            transform: "translateX(-100%)",
+          },
+          to: {
+            transform: "translateX(0)",
+          },
+        },
+        "pulse-subtle": {
+          "0%, 100%": {
+            opacity: "1",
+          },
+          "50%": {
+            opacity: "0.8",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.3s ease-out",
+        "slide-in": "slide-in 0.3s ease-out",
+        "pulse-subtle": "pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
+      },
+      fontSize: {
+        "2xs": ["0.625rem", { lineHeight: "0.75rem" }],
+      },
+      spacing: {
+        "18": "4.5rem",
+        "88": "22rem",
+      },
+      backdropBlur: {
+        xs: "2px",
       },
     },
   },
