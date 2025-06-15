@@ -6,6 +6,8 @@ const authRoutes = require("./routes/authRoutes");
 const youtubeRoutes = require("./routes/youtube");
 const notesRoutes = require("./routes/notes");
 const logsRoutes = require("./routes/logs");
+const video = require("./routes/videos");
+const comment = require("./routes/comments");
 
 dotenv.config();
 
@@ -24,6 +26,8 @@ app.get("/", (req, res) => {
 app.use('/api/youtube', youtubeRoutes);
 app.use('/api/notes', notesRoutes);
 app.use('/api/logs', logsRoutes);
+app.use('/api/comment', comment);
+app.use('/api/video', video);
 
 
 // Connect MongoDB and start server

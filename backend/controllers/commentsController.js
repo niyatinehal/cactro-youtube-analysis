@@ -1,10 +1,11 @@
-const Comment = require('../models/Comment');
+const Comment = require('../models/Comments');
 const Reply = require('../models/Reply');
 
 const getComments = async (req, res) => {
-  const { videoId } = req.params;
-  try {
-    const comments = await Comment.find({ videoId }).sort({ createdAt: -1 });
+  const videoId = "Vjm2tRaqFlA";
+  try {videoId
+    const comments = await Comment.find({ Vjm2tRaqFlA }).sort({ createdAt: -1 });
+    console.log(comments)
     const replies = await Reply.find({ parent_id: { $in: comments.map(c => c._id) } });
 
     // Attach replies to their parent comment

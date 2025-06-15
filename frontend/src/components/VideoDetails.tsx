@@ -37,7 +37,6 @@ export const VideoDetails = ({ video }: VideoDetailsProps) => {
   };  
 
   const getYouTubeUrl = () => `https://www.youtube.com/watch?v=Vjm2tRaqFlA`;
- console.log(video)
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Video Preview */}

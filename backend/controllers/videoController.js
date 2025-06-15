@@ -2,8 +2,9 @@ const Video = require('../models/Video');
 const EventLog = require('../models/EventLog');
 
 const getVideo = async (req, res) => {
+  const HARDCODED_VIDEO_ID = "Vjm2tRaqFlA";
   try {
-    const video = await Video.findById(req.params.videoId);
+    const video = await Video.findOne({ videoId: HARDCODED_VIDEO_ID });
     if (!video) return res.status(404).json({ error: 'Video not found' });
     res.json(video);
   } catch (err) {
@@ -14,7 +15,8 @@ const getVideo = async (req, res) => {
 
 const updateVideo = async (req, res) => {
   try {
-    const video = await Video.findById(req.params.videoId);
+    const HARDCODED_VIDEO_ID = "Vjm2tRaqFlA";
+    const video = await Video.findOne({ videoId: HARDCODED_VIDEO_ID });
     if (!video) return res.status(404).json({ error: 'Video not found' });
 
     const oldData = {
