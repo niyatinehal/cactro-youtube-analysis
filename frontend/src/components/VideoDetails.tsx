@@ -50,10 +50,17 @@ export const VideoDetails = ({ video }: VideoDetailsProps) => {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-200">
-                <Button size="lg" className="youtube-button">
+              <a
+    href={`https://www.youtube.com/watch?v=Vjm2tRaqFlA`}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Button size="lg" className="youtube-button">
                   <Play className="h-6 w-6 mr-2" />
                   Watch on YouTube
                 </Button>
+  </a>
+                
               </div>
               <div className="absolute bottom-2 right-2 bg-black/80 text-white px-2 py-1 rounded text-sm font-medium">
                 {formatDuration(video.duration)}
