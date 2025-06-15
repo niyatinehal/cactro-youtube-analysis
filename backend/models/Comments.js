@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema({
-  videoId: { type: mongoose.Schema.Types.ObjectId, ref: 'Video', required: true },
+  videoId: { type: String, required: true },
   author_display_name: String,
   author_profile_image_url: String,
   text_display: String,

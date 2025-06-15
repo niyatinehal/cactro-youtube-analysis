@@ -21,7 +21,7 @@ export async function getVideo(videoId: string): Promise<Video> {
 }
 
 export async function updateVideo(videoId: string, data: VideoUpdateData): Promise<Video> {
-  const res = await fetch(`${API}/api/youtube/video/Vjm2tRaqFlA`, {
+  const res = await fetch(`${API}/api/video/Vjm2tRaqFlA`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),

@@ -18,4 +18,4 @@ const videoSchema = new mongoose.Schema({
   channel_title: String,
 }, { timestamps: true });
 
-module.exports = mongoose.model('Video', videoSchema);
+module.exports = mongoose.model('Video', videoSchema); 

@@ -2,13 +2,16 @@ const Comment = require('../models/Comments');
 const Reply = require('../models/Reply');
 
 const getComments = async (req, res) => {
-  const videoId = "Vjm2tRaqFlA";
-  try {videoId
-    const comments = await Comment.find({ Vjm2tRaqFlA }).sort({ createdAt: -1 });
-    console.log(comments)
-    const replies = await Reply.find({ parent_id: { $in: comments.map(c => c._id) } });
+  const videoId = "Vjm2tRaqFlA"; // Or use req.params.videoId if dynamic
 
-    // Attach replies to their parent comment
+  try {
+    const comments = await Comment.find({ videoId }).sort({ createdAt: -1 });
+
+    const replies = await Reply.find({
+      parent_id: { $in: comments.map((c) => c._id) },
+    });
+
+    // Group replies by parent comment
     const repliesByParent = replies.reduce((acc, reply) => {
       const parentId = reply.parent_id.toString();
       acc[parentId] = acc[parentId] || [];
@@ -16,26 +19,28 @@ const getComments = async (req, res) => {
       return acc;
     }, {});
 
-    const result = comments.map(comment => ({
+    // Attach replies to each comment
+    const result = comments.map((comment) => ({
       ...comment.toObject(),
-      replies: repliesByParent[comment._id.toString()] || []
+      replies: repliesByParent[comment._id.toString()] || [],
     }));
 
     res.json(result);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch comments' });
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch comments" });
   }
 };
 
+
 const createComment = async (req, res) => {
   const { videoId } = req.params;
-  const { author_display_name, author_profile_image_url, text_display } = req.body;
+  const { author_display_name, text_display } = req.body;
 
   try {
     const newComment = await Comment.create({
       videoId,
       author_display_name,
-      author_profile_image_url,
       text_display,
       published_at: new Date(),
       like_count: 0,
